@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+    }
+
+}
+plugins {
+    id 'java'
+    id 'war'
+}
+
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'java'
+apply plugin: 'war'
+
+group 'RMK'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly 'javax.servlet:servlet-api:2.5'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.25.1'
+}
+dependencies {
+    def tomcatVersion = '8.5.16'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+    contextPath = '/'
+}
+project.webAppDirName = 'WebContent'
