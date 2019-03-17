@@ -29,6 +29,13 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly 'javax.servlet:servlet-api:2.5'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.25.1'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25'
+    compile group: 'org.beykery', name: 'neuroph', version: '2.92'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    compile group: 'javax.xml', name: 'jaxb-api', version: '2.1'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.11'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.11'
+    compile group: 'javax.activation', name: 'activation', version: '1.1.1' 
 }
 dependencies {
     def tomcatVersion = '8.5.16'
